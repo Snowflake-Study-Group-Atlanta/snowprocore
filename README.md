@@ -1,2 +1,200 @@
-# snowprocore
-Study notes for the Snow Pro Core
+# Snowflake SnowPro Core Exam Study Guide Notes
+
+> Study notes based on the official exam guide revision January 13, 2025.
+
+## COF-C02/COF-R02 Exam Domains
+
+- Domain 1.0: [Snowflake AI Data Cloud Features and Architecture](snowflake_ai_data_cloud_features_and_architecture) (24%)
+- Domain 2.0: [Account Access and Security](account_access_and_security) (18%)
+- Domain 3.0: [Performance and Cost Optimization Concepts](performance_and_cost_optimization_concepts) (16%)
+- Domain 4.0: [Data Loading and Unloading](data_loading_and_unloading) (12%)
+- Domain 5.0: [Data Transformations](data_transformations) (18%)
+- Domain 6.0: [Data Protection and Data Sharing](data_protection_and_data_sharing) (12%)
+
+## Table of Contents
+
+1.  Snowflake AI Data Cloud Features and Architecture
+    -   Outline key features of the Snowflake Data Cloud
+        -   Interoperable stage
+        -   Elastic compute
+        -   Snowflake's layers
+        -   Overview of Snowflake editions
+    -   Outline key Snowflake tools and interfaces
+        -   Snowsight
+        -   SnowSQL
+        -   Snowflake connectors
+        -   Snowflake drivers
+        -   Snowpark
+        -   SnowCD
+        -   Streamlit in Snowflake
+        -   Cortex (AI/ML services)
+        -   Snowflake SQL API
+    -   Outline Snowflake's catalog and objects
+        -   Databases
+        -   Stages
+        -   Schema types
+        -   Table types
+        -   View types
+        -   Data types
+        -   User Defined Functions (UDFs)
+        -   User Defined Table Functions (UDTFs)
+        -   Stored procedures
+        -   Streams
+        -   Tasks
+        -   Pipes
+        -   Shares
+        -   Sequences
+    -   Outline Snowflake storage concepts
+        -   Micro-partitions
+        -   Data clustering
+        -   Data storage monitoring
+2.  Account Access and Security
+    -   Outline security principles
+        -   Network security and policies
+        -   Multi-Factor Authentication
+        -   (MFA) enforcement
+        -   Federated authentication
+        -   Key pair authentication
+        -   Single Sign-On (SSO)
+    -   Define the entities and roles that are used in Snowflake
+        -   Overview of access control
+            -   Access control frameworks
+            -   Access control privileges
+        -   Outline how privileges can be granted and revoked
+        -   Explain role hierarchy and privilege inheritance
+    -   Outline data governance capabilities in Snowflake
+        -   Accounts
+        -   Organizations
+        -   Secure views
+        -   Secure functions
+        -   Information schemas
+        -   Access history
+            -   Tracking read/write operations
+        -   Overview of row/column-level security
+        -   Object tags
+3.  Performance and Cost Optimization Concepts
+    -   Explain the use of the Query Profile
+        -   Explain plans
+        -   Data spilling
+        -   Use of the data cache
+        -   Micro-partition pruning
+        -   Query history
+    -   Explain virtual warehouse configurations
+        -   Types of warehouses
+        -   Multi-clustering warehouses
+            -   Scaling policies
+            -   Scaling modes
+        -   Warehouse sizing
+        -   Warehouse settings and access
+    -   Outline virtual warehouse performance tools
+        -   Monitoring warehouse loads
+        -   Scaling up compared to scaling out
+        -   Query acceleration service
+    -   Optimize query performance
+        -   Describe the use of materialized views
+        -   Use of specific SELECT commands
+        -   Clustering
+        -   Search optimization service
+        -   Persisted query results
+        -   Understanding the impact of different types of caching
+            -   Metadata cache
+            -   Result cache
+            -   Warehouse cache
+    -   Describe cost optimization concepts and best practices in Snowflake
+        -   Understanding and exploring the costs of different Snowflake features and services
+            -   Cost insights feature in Snowsight
+            -   Use of different table types and sizes
+            -   Use of views
+            -   Use of search optimization paths
+            -   Storage costs
+            -   Compute costs
+        -   Understand and explore cloud services costs in Snowflake
+        -   Costs considerations when using serverless features
+        -   Cost considerations when moving data among regions
+            -   Replication
+            -   Fail-over
+        -   Monitor and control costs
+            -   Resource monitors
+            -   Snowflake Budgets service
+        -   Attribute costs
+            -   Cost center tagging
+            -   Use of the ACCOUNT USAGE schema
+4.  Data Loading and Unloading
+    -   Define concepts and best practices that should be considered when loading data
+        -   Stages and stage types
+        -   File size and formats
+        -   Folder structures
+        -   Ad hoc/bulk loading
+        -   Snowpipe
+    -   Outline different commands used to load data and when they should be used
+        -   CREATE STAGE
+        -   CREATE FILE FORMAT
+        -   CREATE PIPE
+        -   CREATE EXTERNAL TABLE
+        -   COPY INTO
+        -   INSERT/INSERT OVERWRITE
+        -   PUT
+        -   VALIDATE
+    -   Define concepts and best practices that should be considered when unloading data
+        -   File size and formats
+            -   Overview of compression methods
+        -   Empty strings and NULL values
+        -   Unloading to a single file
+        -   Unloading relational tables
+    -   Outline the different commands used to unload data and when they should be used
+        -   GET
+        -   LIST
+        -   COPY INTO
+        -   CREATE STAGE
+        -   CREATE FILE FORMAT
+5.  Data Transformations
+    -   Explain how to work with structured data
+        -   Estimation functions
+        -   Sampling
+        -   SAMPLE command
+        -   /TABLESAMPLE command
+        -   Sampling methods
+        -   Fraction-based
+        -   Fixed-size
+        -   Supported function types
+        -   System functions
+        -   Table functions
+        -   External functions
+        -   User-Defined Functions (UDFs)
+        -   Stored procedures
+        -   Streams
+        -   Tasks
+    -   Explain how to work with semistructured data
+        -   Supported data formats, data types, and sizes
+        -   VARIANT column
+        -   Flattening the nested structure
+            -   FLATTEN command
+            -   LATERAL FLATTEN command
+        -   Semi-structured data functions
+            -   ARRAY/OBJECT creation and manipulation
+            -   Extracting values
+            -   Type predicates
+    -   Explain how to work with unstructured data
+        -   Define and use directory tables
+        -   SQL file functions
+        -   Types of URLs used to access data files
+        -   Processing unstructured data
+            -   User-Defined Functions (UDFs) for unstructured data analysis
+            -   Stored procedure
+6.  Data Protection and Data Sharing
+    -   Outline Continuous Data Protection with Snowflake
+        -   Time Travel
+        -   Fail-safe
+        -   Data encryption
+        -   Cloning
+        -   Replication and failover
+    -   Outline Snowflake data sharing capabilities
+        -   Account types
+        -   Snowflake Marketplace
+        -   Data Exchange
+        -   Access control options
+            -   DDL commands to create and manage shares
+            -   Privileges required for working with shares
+        -   Secure Data Sharing
+            -   Direct shares
+            -   Data listings
