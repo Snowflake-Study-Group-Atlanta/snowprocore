@@ -1,6 +1,12 @@
 # Snowflake AI Data Cloud Features and Architecture
 
- intro paragraph goes here
+Snowflake is an overloaded term. It's a company, a Software-as-a-Service, and a specific database used in the service.
+
+Snowflake the daqta platform is a cloud-native, designed specifically for cloud environments, rather than being adapted from traditional on-premises systems. It uses a three-layer architecture to separate compute, storage, and cloud services into independent layers, alow independent scaling.
+
+Internally, Snowflake stores data in a compressed, columnar format that dramatically accelerates analytical queries by reading only the columns needed for each query, making it ideal for business intelligence and data warehousing workloads. Additionally, Snowflake uses a micro-partitioning storage model that automatically organizes data to handle workloads.
+
+The platform's interoperability  works with AWS, Azure, and GCP, allowing customers to use existing cloud infrastructure. and even share data seamlessly across different cloud environments.
 
 ## Outline key features of the Snowflake Data Cloud
 
