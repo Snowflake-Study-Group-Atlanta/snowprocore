@@ -12,19 +12,19 @@ The platform's interoperability  works with AWS, Azure, and GCP, allowing custom
 
 ### Interoperable stage
 
-A stage in Snowflake is a location where data files are stored for loading into or unloading from Snowflake tables. Stages are essential for interoperability, allowing Snowflake to seamlessly connect with a wide range of external cloud storage solutions. There are two main types of stages:
+A stage in Snowflake is a location where data files are stored for loading into or unloading from Snowflake tables. Stages are essential for interoperability, allowing Snowflake to connect to different external cloud storage solutions. There are two main types of stages:
 
-- **Internal Stages:** These are stages where data is stored securely within your Snowflake account. Snowflake manages the underlying storage for these stages. Internal stages are a good option when you need to stage data before loading it into Snowflake and don't want to manage your own cloud storage.
-- **External Stages:** These are stages that point to data stored in your own cloud storage accounts on Amazon S3, Google Cloud Storage, or Microsoft Azure. By using external stages, you can load data into Snowflake directly from your existing cloud storage, and unload data from Snowflake to your cloud storage. This makes Snowflake highly interoperable with your existing data lake and cloud environment.
+- **Internal Stages:** These are stages where data is stored securely within your Snowflake account. Snowflake manages the underlying storage for these stages. The internal stages types are *user*, *table*, and *named*.
+- **External Stages:** These are stages that point to data stored in your own cloud storage accounts on Amazon S3, Google Cloud Storage, or Microsoft Azure. External stages connect to the storage providers so you can load and unload data into Snowflake directly from your existing cloud storage. This is a key feature, and makes Snowflake highly interoperable with your existing data lake and cloud environment.
 
 > **Two stage types:** Internal (Snowflake-managed) vs External (your cloud storage: S3, GCS, Azure). External stages enable direct integration with existing data lakes.
 
 ### Elastic compute
 
-Elastic compute in Snowflake is delivered through a feature called Virtual Warehouses. A virtual warehouse is a cluster of compute resources (CPU, memory, and temporary storage) that executes your queries, data loading, and other DML operations. The key "elastic" aspect comes from the ability to:
+Elastic compute in Snowflake is delivered through Virtual Warehouses, clusters of compute resources (CPU, memory, and temporary storage) that execute queries, data loading, and DML operations. The key "elastic" aspect comes from:
 
-- **Scale Up/Down:** You can resize a warehouse at any time to a larger or smaller size (T-shirt sizes like X-Small, Small, Medium, Large, etc.). This is useful when you need more processing power for a complex query, and then you can scale it down to save costs.
-- **Scale In/Out:** You can configure a multi-cluster warehouse that automatically scales out by adding more clusters of the same size to handle concurrent query workloads. As the number of concurrent queries increases, the warehouse will automatically add clusters up to a maximum you define. When the query load decreases, it will automatically scale in by shutting down the extra clusters.
+- **Scale Up/Down:** Resize warehouses at any time using T-shirt sizes (X-Small to Large) to match workload demands and control costs.
+- **Scale In/Out:** Multi-cluster warehouses automatically add or remove clusters based on concurrent query load, scaling out to your defined maximum and back down as demand decreases.
 
 > **Elastic Compute = Virtual Warehouses**
 >
