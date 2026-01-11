@@ -1,5 +1,7 @@
 # Snowflake AI Data Cloud Features and Architecture
 
+my intor paragraph here.
+
 ## Outline key features of the Snowflake Data Cloud
 
 ### Interoperable stage
@@ -9,12 +11,20 @@ A stage in Snowflake is a location where data files are stored for loading into 
 - **Internal Stages:** These are stages where data is stored securely within your Snowflake account. Snowflake manages the underlying storage for these stages. Internal stages are a good option when you need to stage data before loading it into Snowflake and don't want to manage your own cloud storage.
 - **External Stages:** These are stages that point to data stored in your own cloud storage accounts on Amazon S3, Google Cloud Storage, or Microsoft Azure. By using external stages, you can load data into Snowflake directly from your existing cloud storage, and unload data from Snowflake to your cloud storage. This makes Snowflake highly interoperable with your existing data lake and cloud environment.
 
+> **Two stage types:** Internal (Snowflake-managed) vs External (your cloud storage: S3, GCS, Azure). External stages enable direct integration with existing data lakes.
+
 ### Elastic compute
 
 Elastic compute in Snowflake is delivered through a feature called Virtual Warehouses. A virtual warehouse is a cluster of compute resources (CPU, memory, and temporary storage) that executes your queries, data loading, and other DML operations. The key "elastic" aspect comes from the ability to:
 
 - **Scale Up/Down:** You can resize a warehouse at any time to a larger or smaller size (T-shirt sizes like X-Small, Small, Medium, Large, etc.). This is useful when you need more processing power for a complex query, and then you can scale it down to save costs.
 - **Scale In/Out:** You can configure a multi-cluster warehouse that automatically scales out by adding more clusters of the same size to handle concurrent query workloads. As the number of concurrent queries increases, the warehouse will automatically add clusters up to a maximum you define. When the query load decreases, it will automatically scale in by shutting down the extra clusters.
+
+> **Elastic Compute = Virtual Warehouses**
+>
+> - Scale Up/Down: Change warehouse size (X-Small → Large)
+> - Scale In/Out: Add/remove clusters for concurrency
+> - Pay only for compute when using it (separation of storage and compute)
 
 This separation of storage and compute allows you to pay for compute only when you are using it, and to scale your compute resources independently of your storage.
 
@@ -26,6 +36,11 @@ Snowflake's architecture is a hybrid of traditional shared-disk and shared-nothi
 2. **Query Processing (Compute):** This layer is where the actual query execution happens. It's composed of the virtual warehouses described above. Each virtual warehouse is an independent compute cluster that doesn't share compute resources with other virtual warehouses. This layer is what makes Snowflake's elastic compute possible.
 3. **Cloud Services:** This is the "brain" of Snowflake. This layer is a collection of services that coordinate activities across Snowflake. These services include authentication, infrastructure management, metadata management, query parsing and optimization, and access control. The services layer is what makes Snowflake a fully managed service, as it handles all the complex tasks of managing a database system.
 
+> **Three-Layer Architecture (Hybrid shared-disk + shared-nothing):**
+> 1. **Database Storage** - Compressed, columnar format in cloud storage (AWS/Azure/GCP)
+> 2. **Query Processing** - Independent virtual warehouses (no shared compute)
+> 3. **Cloud Services** - The "brain": authentication, metadata, query optimization, access control
+
 ### Overview of Snowflake editions
 
 Snowflake offers several editions, each providing a different level of features and services. The main editions are:
@@ -34,6 +49,8 @@ Snowflake offers several editions, each providing a different level of features 
 - **Enterprise:** This edition provides all the features of the Standard edition, plus additional features for large-scale enterprises, such as multi-cluster warehouses for high concurrency, and the ability to create materialized views.
 - **Business Critical:** This edition includes all the features of the Enterprise edition, but with additional data protection features for organizations that handle highly sensitive data. These features include support for HIPAA and PCI compliance, and failover/failback for business continuity.
 - **Virtual Private Snowflake (VPS):** This is the highest level of Snowflake, providing the most comprehensive security and isolation. With VPS, you get a completely separate Snowflake environment, with no shared resources with any other Snowflake customers.
+
+> **Editions progression:** Standard → Enterprise (+ multi-cluster, materialized views) → Business Critical (+ HIPAA/PCI, failover) → VPS (complete isolation)
 
 ## Outline key Snowflake tools and interfaces
 
@@ -47,6 +64,8 @@ Snowsight is the modern web interface for Snowflake. It's a powerful tool that a
 - Monitor query history and performance.
 - Manage your Snowflake account and users.
 - Access and use Snowpark, Streamlit, and other Snowflake features.
+
+> **Snowsight** = Modern web UI for SQL, visualizations, monitoring, and management
 
 ### SnowSQL
 
@@ -66,6 +85,8 @@ Snowflake provides a wide range of connectors that allow you to connect your fav
 - **Python Connector:** Provides a Python interface to Snowflake, allowing you to execute queries and manage database objects from your Python scripts.
 - **Kafka Connector:** Enables you to stream data from Apache Kafka topics directly into Snowflake tables.
 
+> **Key Connectors:** Spark, Python, Kafka (for streaming data)
+
 ### Snowflake drivers
 
 Snowflake provides drivers for various programming languages and data-access interfaces, allowing you to build your own applications that connect to Snowflake. These drivers include:
@@ -80,6 +101,8 @@ Snowflake provides drivers for various programming languages and data-access int
 
 Snowpark is a developer framework for Snowflake that allows you to query and process data in Snowflake using your favorite programming languages like Python, Java, and Scala. With Snowpark, you can build complex data pipelines and applications that run natively in Snowflake, leveraging Snowflake's elastic compute engine. Snowpark provides a DataFrame-style API that is similar to what you might find in tools like Apache Spark or pandas.
 
+> **Snowpark:** Developer framework for Python/Java/Scala with DataFrame API. Runs natively in Snowflake (pushdown compute).
+
 ### SnowCD
 
 SnowCD (Snowflake Connectivity Diagnostic) is a command-line tool that helps you diagnose and troubleshoot your network connection to Snowflake. It runs a series of tests to check for things like network latency, DNS resolution, and firewall issues. SnowCD is a useful tool to have when you're experiencing connectivity problems with Snowflake.
@@ -87,6 +110,8 @@ SnowCD (Snowflake Connectivity Diagnostic) is a command-line tool that helps you
 ### Streamlit in Snowflake
 
 Streamlit is an open-source Python library that makes it easy to create beautiful, custom web apps for machine learning and data science. With Streamlit in Snowflake, you can build and deploy Streamlit apps that run natively in Snowflake. This allows you to create interactive data applications that are securely connected to your data in Snowflake, without having to manage any additional infrastructure.
+
+> **Streamlit in Snowflake:** Build and deploy Python web apps natively in Snowflake (no additional infrastructure needed)
 
 ### Cortex (AI/ML services)
 
@@ -96,6 +121,8 @@ Snowflake Cortex is a set of managed AI and machine learning services that are b
 - **Forecasting:** Allows you to generate forecasts for your time-series data.
 - **Anomaly Detection:** Helps you identify unusual patterns and outliers in your data.
 - **Contribution Explorer:** Helps you discover the key drivers behind your business metrics.
+
+> **Cortex AI/ML Services:** LLM Functions (in SQL), Forecasting, Anomaly Detection, Contribution Explorer - no ML expertise required
 
 ### Snowflake SQL API
 
@@ -123,6 +150,8 @@ A schema is a logical grouping of database objects like tables and views within 
 - **Transient:** These schemas are similar to permanent schemas, but they are not automatically recovered in the event of a failure. This makes them a good option for temporary or staging data, as they have lower storage costs.
 - **Temporary:** These schemas are session-based, meaning they are automatically dropped at the end of the session in which they were created.
 
+> **Three Schema Types:** Permanent (standard), Transient (no failure recovery, lower cost), Temporary (session-based)
+
 ### Table types
 
 Snowflake supports several types of tables:
@@ -133,6 +162,13 @@ Snowflake supports several types of tables:
 - **External:** These tables allow you to query data stored in files in an external stage (S3, Azure Blob, GCS) as if it were a regular table in Snowflake.
 - **Iceberg:** These tables are a special type of external table that uses the Apache Iceberg table format, enabling new use cases like table evolution and time travel on your data lake.
 
+> **Table Types & Time Travel:**
+> - **Permanent:** 7-day Time Travel (90 days Enterprise), has Fail-safe
+> - **Transient:** 24-hour Time Travel max, NO Fail-safe
+> - **Temporary:** Session-specific
+> - **External:** Query files in external stages as tables
+> - **Iceberg:** Apache Iceberg format with evolution & time travel on data lake
+
 ### View types
 
 A view is a saved query that can be queried like a table. Snowflake has three types of views:
@@ -140,6 +176,11 @@ A view is a saved query that can be queried like a table. Snowflake has three ty
 - **Standard (or non-materialized) Views:** The query that defines the view is executed each time the view is queried.
 - **Materialized Views:** The result of the view's query is stored as a table and is automatically updated as the underlying base table changes. Materialized views can improve query performance for complex queries.
 - **Secure Views:** These are designed for data privacy. They prevent users from seeing the underlying query and can be used to expose only certain rows or columns of a table to specific users.
+
+> **Three View Types:**
+> - **Standard:** Query executed each time
+> - **Materialized:** Stored result, auto-updated (performance boost)
+> - **Secure:** Hides query definition for data privacy
 
 ### Data types
 
@@ -153,6 +194,8 @@ Snowflake supports a rich set of SQL data types, including:
 - **Semi-structured:** `VARIANT`, `ARRAY`, `OBJECT`
 - **Geospatial:** `GEOGRAPHY`, `GEOMETRY`
 
+> **Semi-structured data types:** VARIANT, ARRAY, OBJECT (key differentiator for JSON/XML)
+
 ### User Defined Functions (UDFs)
 
 A UDF is a user-defined function that can be called in SQL queries. UDFs allow you to extend Snowflake's functionality by writing your own custom logic. Snowflake UDFs can be written in:
@@ -161,6 +204,8 @@ A UDF is a user-defined function that can be called in SQL queries. UDFs allow y
 - **JavaScript:** For more complex logic.
 - **Java:** For computationally intensive logic that can be packaged as a JAR file.
 - **Python:** For leveraging the rich ecosystem of Python libraries.
+
+> **UDFs support:** SQL, JavaScript, Java, Python
 
 ### User Defined Table Functions (UDTFs)
 
@@ -174,17 +219,25 @@ A stored procedure is a set of SQL statements and procedural logic that is store
 
 A stream is an object that captures change data capture (CDC) information for a table. It records all inserts, updates, and deletes made to a table, allowing you to take action on the changed data. Streams are a powerful tool for building data pipelines that process only the new or changed data.
 
+> **Streams:** Capture CDC (Change Data Capture) - inserts, updates, deletes. Essential for incremental data pipelines.
+
 ### Tasks
 
 A task is a scheduled SQL statement or stored procedure. Tasks allow you to automate your data pipelines and other repetitive tasks in Snowflake. You can create a schedule for your tasks to run at a specific time or interval. Tasks can be chained together to create complex workflows.
+
+> **Tasks:** Scheduled SQL/stored procedures. Can be chained for complex workflows (task trees/DAGs).
 
 ### Pipes
 
 A pipe is an object that defines a continuous data ingestion process from an external stage. Snowpipe, the service that uses pipes, automatically loads new data files as they arrive in the stage into a target table. This is a highly efficient and scalable way to load streaming data into Snowflake.
 
+> **Pipes (Snowpipe):** Continuous, automatic data ingestion from external stages. Loads files as they arrive.
+
 ### Shares
 
 A share is a named Snowflake object that encapsulates all of the information required to share a database. Shares are the fundamental object that enables Snowflake's Secure Data Sharing. You can share databases with other Snowflake accounts, and even with non-Snowflake users through reader accounts.
+
+> **Shares:** Enable Secure Data Sharing between Snowflake accounts (even to non-Snowflake users via reader accounts).
 
 ### Sequences
 
@@ -196,9 +249,16 @@ A sequence is a database object that generates a sequence of unique numbers. Seq
 
 Micro-partitions are the fundamental unit of storage in Snowflake. When you load data into Snowflake, it's automatically divided into small, immutable micro-partitions, typically 50-500MB of uncompressed data. For each micro-partition, Snowflake stores metadata about the data within it, such as the range of values for each column. This metadata is what allows Snowflake to perform very efficient query pruning, where it only scans the micro-partitions that are relevant to a query.
 
+> **Micro-partitions:** Fundamental storage unit
+> - Immutable, 50-500MB uncompressed
+> - Automatic partitioning
+> - Metadata per partition (column ranges) enables query pruning
+
 ### Data clustering
 
 Data clustering is the process of co-locating related data within the same or nearby micro-partitions. By clustering your data, you can significantly improve query performance, as Snowflake will have to scan fewer micro-partitions to retrieve the data for your queries. You can define a clustering key for a table, and Snowflake will automatically maintain the clustering of the data as you load new data into the table.
+
+> **Data Clustering:** Co-locate related data in same/nearby micro-partitions. Define clustering key → automatic maintenance → improved query performance.
 
 ### Data storage monitoring
 
@@ -208,3 +268,5 @@ Snowflake provides several ways to monitor your data storage usage. You can use 
 - `STORAGE_USAGE`: For an account-level overview of storage usage.
 
 You can also use the Snowsight web interface to visualize your storage usage over time. Monitoring your storage is important for understanding your costs and for identifying opportunities to optimize your storage.
+
+> **Storage Monitoring:** Use ACCOUNT_USAGE schema (TABLE_STORAGE_METRICS, STORAGE_USAGE) or Snowsight for visualization.
