@@ -1,6 +1,6 @@
 # Snowflake AI Data Cloud Features and Architecture
 
-my intor paragraph here.
+ intro paragraph goes here
 
 ## Outline key features of the Snowflake Data Cloud
 
@@ -37,6 +37,7 @@ Snowflake's architecture is a hybrid of traditional shared-disk and shared-nothi
 3. **Cloud Services:** This is the "brain" of Snowflake. This layer is a collection of services that coordinate activities across Snowflake. These services include authentication, infrastructure management, metadata management, query parsing and optimization, and access control. The services layer is what makes Snowflake a fully managed service, as it handles all the complex tasks of managing a database system.
 
 > **Three-Layer Architecture (Hybrid shared-disk + shared-nothing):**
+>
 > 1. **Database Storage** - Compressed, columnar format in cloud storage (AWS/Azure/GCP)
 > 2. **Query Processing** - Independent virtual warehouses (no shared compute)
 > 3. **Cloud Services** - The "brain": authentication, metadata, query optimization, access control
@@ -163,6 +164,7 @@ Snowflake supports several types of tables:
 - **Iceberg:** These tables are a special type of external table that uses the Apache Iceberg table format, enabling new use cases like table evolution and time travel on your data lake.
 
 > **Table Types & Time Travel:**
+>
 > - **Permanent:** 7-day Time Travel (90 days Enterprise), has Fail-safe
 > - **Transient:** 24-hour Time Travel max, NO Fail-safe
 > - **Temporary:** Session-specific
@@ -178,6 +180,7 @@ A view is a saved query that can be queried like a table. Snowflake has three ty
 - **Secure Views:** These are designed for data privacy. They prevent users from seeing the underlying query and can be used to expose only certain rows or columns of a table to specific users.
 
 > **Three View Types:**
+>
 > - **Standard:** Query executed each time
 > - **Materialized:** Stored result, auto-updated (performance boost)
 > - **Secure:** Hides query definition for data privacy
@@ -250,6 +253,7 @@ A sequence is a database object that generates a sequence of unique numbers. Seq
 Micro-partitions are the fundamental unit of storage in Snowflake. When you load data into Snowflake, it's automatically divided into small, immutable micro-partitions, typically 50-500MB of uncompressed data. For each micro-partition, Snowflake stores metadata about the data within it, such as the range of values for each column. This metadata is what allows Snowflake to perform very efficient query pruning, where it only scans the micro-partitions that are relevant to a query.
 
 > **Micro-partitions:** Fundamental storage unit
+>
 > - Immutable, 50-500MB uncompressed
 > - Automatic partitioning
 > - Metadata per partition (column ranges) enables query pruning
