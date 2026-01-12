@@ -9,6 +9,7 @@ This is a documentation repository containing study notes for the Snowflake Snow
 ## Structure
 
 The repository consists of Markdown files organized by exam domain:
+
 - `snowflake_ai_data_cloud_features_and_architecture.md` - Domain 1 (24%)
 - `account_access_and_security.md` - Domain 2 (18%)
 - `performance_and_cost_optimization_concepts.md` - Domain 3 (16%)
@@ -19,9 +20,10 @@ The repository consists of Markdown files organized by exam domain:
 ## Content Conventions
 
 - Each domain file follows the official exam guide structure with hierarchical headings
-- Key concepts are highlighted using blockquote callouts (>) for quick review
+- Key concepts are highlighted using blockquote callouts (>) for quick review but do not use the [! TYPE] as part of the syntax
 - Callouts summarize important facts, comparisons, and exam-relevant distinctions
 - Content focuses on conceptual understanding rather than step-by-step procedures
+- Make sure all markdown bullet lists have a blank line before and after, following all common markdown linter rules.
 
 ## No Build System
 
