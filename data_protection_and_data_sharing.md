@@ -4,68 +4,87 @@
 
 ### Time Travel
 
-Snowflake's Time Travel feature is a powerful tool for data protection. It allows you to access historical versions of your data at any point within a defined retention period. For example, if you accidentally drop a table or update a large number of rows incorrectly, you can use Time Travel to query the table as it existed before the mistake and recover the lost data. This can be done using the `AT` or `BEFORE` clause in your `SELECT` statements. The standard retention period for Time Travel is 1 day, but it can be extended up to 90 days for Enterprise edition and above.
+Access historical data within the retention period. Use `AT` or `BEFORE` clauses to query past states. Recover from accidental drops or incorrect updates.
+
+- Standard: 1 day retention
+- Enterprise+: Up to 90 days
+
+> **Time Travel:** Query historical data with AT/BEFORE clauses. 1 day (Standard) to 90 days (Enterprise+).
 
 ### Fail-safe
 
-Fail-safe is an additional data recovery service that provides a 7-day period of protection after the Time Travel retention period has ended. If you have a catastrophic data loss event and are unable to recover your data using Time Travel, Snowflake support can help you recover your data from Fail-safe. It's important to note that Fail-safe is a last resort for disaster recovery and is not intended for routine data recovery tasks. The data in Fail-safe is not directly queryable by users.
+7-day recovery period after Time Travel expires. Data recoverable only by Snowflake support for disaster scenarios. Not for routine recovery—not user-queryable.
+
+> **Fail-safe:** 7 days after Time Travel ends. Snowflake support recovery only. Last resort for disasters.
 
 ### Data encryption
 
-Snowflake provides comprehensive, "always-on" data encryption for all data, both at rest and in transit.
+Always-on encryption at rest and in transit:
 
-- **Encryption at Rest:** All data stored in Snowflake tables and internal stages is automatically encrypted using AES-256 encryption. Snowflake manages the encryption keys in a hierarchical model.
-- **Encryption in Transit:** All communication with Snowflake is encrypted using TLS.
-- **Tri-Secret Secure:** For customers with the highest security requirements, Snowflake offers a feature called Tri-Secret Secure, which allows you to use your own master encryption key. This gives you full control over your data encryption.
+- **At Rest:** AES-256 encryption. Snowflake manages keys hierarchically.
+- **In Transit:** TLS for all communication.
+- **Tri-Secret Secure:** Customer-managed master key for full encryption control.
+
+> **Encryption:** AES-256 at rest, TLS in transit. Tri-Secret Secure for customer-managed keys.
 
 ### Cloning
 
-Zero-Copy Cloning is a unique and powerful feature in Snowflake. It allows you to create a copy of a database, schema, or table almost instantly, without actually duplicating the underlying storage. When you clone an object, you are creating a new object that shares the same underlying micro-partitions as the original. Any changes made to the clone or the original will create new micro-partitions, but the unchanged data will continue to be shared. This makes cloning an extremely efficient way to create development and test environments, or to create a snapshot of your data for analysis.
+Zero-Copy Cloning creates instant copies of databases, schemas, or tables without duplicating storage. Clone and original share unchanged micro-partitions. Changes create new partitions.
+
+> **Zero-Copy Cloning:** Instant copy without storage duplication. Shared partitions until modified. Use for dev/test environments.
 
 ### Replication and failover
 
-Snowflake's database replication feature allows you to replicate a database from a primary Snowflake account to one or more secondary accounts. This is a key feature for disaster recovery and business continuity. You can replicate your databases to another account in a different region or even a different cloud provider. In the event of an outage in your primary region, you can failover to one of your secondary accounts, making it the new primary and ensuring that your business operations can continue with minimal disruption.
+Replicate databases to secondary accounts in different regions or cloud providers. Failover to secondary during outages for business continuity.
+
+> **Replication:** Copy databases to other regions/clouds. Failover for disaster recovery and business continuity.
 
 ## Outline Snowflake data sharing capabilities
 
 ### Account types
 
-In the context of data sharing, there are two main types of accounts:
+- **Provider Account:** Standard account sharing data with others.
+- **Consumer Account:** Receives shared data. Can be full Snowflake customer or a reader account (provider-created for non-Snowflake users).
 
-- **Provider Accounts:** These are standard Snowflake accounts that have data they want to share with other accounts.
-- **Consumer Accounts:** These are accounts that consume data that has been shared with them. A consumer can be a full Snowflake customer, or they can be a "reader account". A reader account is a special type of account that a provider can create to allow a consumer to access their shared data without the consumer needing to become a Snowflake customer themselves.
+> **Sharing Accounts:** Providers share data. Consumers receive it. Reader accounts for non-Snowflake users.
 
 ### Snowflake Marketplace
 
-The Snowflake Marketplace is a public data marketplace where you can discover, access, and monetize live, ready-to-query datasets from a wide variety of third-party data providers and SaaS vendors. As a consumer, you can browse the marketplace and instantly get access to datasets that can enrich your own data and analysis. As a provider, you can publish your own datasets to the marketplace and reach a large audience of Snowflake customers.
+Public marketplace for discovering and accessing third-party datasets. Consumers browse and access data. Providers publish datasets.
 
 ### Data Exchange
 
-A Data Exchange is a private hub for data sharing. It allows you to create your own branded and secure environment where you can invite your customers, partners, and suppliers to share and consume data with each other. This is a great solution for companies that want to create a data sharing ecosystem with their business partners.
+Private sharing hub. Create branded environments for customers, partners, and suppliers to share data.
+
+> **Marketplace vs Exchange:** Marketplace = public. Data Exchange = private, branded hub.
 
 ### Access control options
 
 #### DDL commands to create and manage shares
 
-Data sharing is managed through a set of simple DDL commands:
-
-- **`CREATE SHARE`:** Creates a new share object.
-- **`GRANT USAGE ON DATABASE <db_name> TO SHARE <share_name>`:** Grants a share the privilege to access a database.
-- **`GRANT SELECT ON TABLE <table_name> TO SHARE <share_name>`:** Grants a share the `SELECT` privilege on a table, making it accessible to the consumer.
-- **`ALTER SHARE <share_name> ADD ACCOUNTS = <consumer_account>`:** Adds a consumer account to the share, giving them access to the shared objects.
+- `CREATE SHARE`: Create share object
+- `GRANT USAGE ON DATABASE <db> TO SHARE <share>`: Grant database access
+- `GRANT SELECT ON TABLE <table> TO SHARE <share>`: Grant table access
+- `ALTER SHARE <share> ADD ACCOUNTS = <account>`: Add consumer
 
 #### Privileges required for working with shares
 
-To create and manage shares, a user needs the `CREATE SHARE` privilege for the account. To add objects to a share, the role must have the necessary privileges (e.g., `USAGE` on the database, `SELECT` on the table) on the objects being shared.
+`CREATE SHARE` privilege for account. `USAGE` on database and `SELECT` on tables being shared.
+
+> **Share Privileges:** CREATE SHARE at account level. USAGE + SELECT on shared objects.
 
 ### Secure Data Sharing
 
-Snowflake's Secure Data Sharing is a revolutionary approach to data sharing. It allows you to share live, read-only data with other Snowflake accounts without having to copy or move the data. The data is always up-to-date, and the sharing is completely secure and governed.
+Share live, read-only data without copying or moving. Data stays current. No storage duplication.
+
+> **Secure Data Sharing:** Live, read-only access. No data copy. Always current.
 
 #### Direct shares
 
-A direct share is the simplest way to share data. It's a one-to-one sharing mechanism where a provider creates a share and grants access to it to one or more specific consumer accounts. This is the most common method for sharing data directly with a known business partner or another department within your own organization.
+One-to-one sharing with specific consumer accounts. Common for known partners or internal departments.
 
 #### Data listings
 
-A data listing is the mechanism used to offer data on the Snowflake Marketplace or in a Data Exchange. A listing is a share that is discoverable and can be accessed by a broader audience. Listings can be public or private, and can be offered for free or for a fee. They provide a way to package your shared data with additional metadata, such as a description, sample queries, and terms of service.
+Shares offered on Marketplace or Data Exchange. Public or private. Can be free or paid. Includes metadata, sample queries, terms.
+
+> **Direct Shares vs Listings:** Direct = specific accounts. Listings = discoverable on Marketplace/Exchange.
