@@ -1,5 +1,3 @@
-# Data Loading and Unloading
-
 ## Define concepts and best practices that should be considered when loading data
 
 ### Stages and stage types

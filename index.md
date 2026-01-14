@@ -5,25 +5,21 @@ title: Study Guide
 
 # Study Guide
 
+## Introduction
+
 ## Schedule
 
-<!-- Add your study schedule here -->
+| Date | Topic | Registration |
+|------|-------|--------------|
+| 1/28/2026 | Domain 1.0: Snowflake AI Data Cloud Features and Architecture (24%) | [RSVP](https://usergroups.snowflake.com/events/details/snowflake-atlanta-presents-snowpro-study-group-starting-january-2026/) |
+| 2/25/2026 | Domain 2.0: Account Access and Security (18%) | |
+| 3/25/2026 | Domain 3.0: Performance and Cost Optimization Concepts (16%) | |
+| 4/29/2026 | Domain 4.0: Data Loading and Unloading (12%) | |
+| 5/27/2026 | Domain 5.0: Data Transformations (18%) | |
+| 6/24/2026 | Domain 6.0: Data Protection and Data Sharing (12%) | |
 
-| Week | Topic | Status |
-|------|-------|--------|
-| 1    | Domain 1 | Pending |
-| 2    | Domain 2 | Pending |
+## Exam Details
 
-## Domains
+## Resources
 
-- [Domain 1](domain1.md) - Details on Domain 1
-- [Domain 2](domain2.md) - Details on Domain 2
-
-## High-Level Study Guide
-
-<!-- Add your high-level study guide content here -->
-
-1. **Review objectives** - Understand what each domain covers
-2. **Study materials** - Gather resources for each domain
-3. **Practice** - Apply knowledge through exercises
-4. **Review** - Revisit weak areas before assessment
+Outline or navigation?

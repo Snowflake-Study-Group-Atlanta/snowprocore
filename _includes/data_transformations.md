@@ -1,5 +1,3 @@
-# Data Transformations
-
 ## Explain how to work with structured data
 
 ### Estimation functions

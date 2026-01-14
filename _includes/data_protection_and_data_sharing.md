@@ -1,5 +1,3 @@
-# Data Protection and Data Sharing
-
 ## Outline Continuous Data Protection with Snowflake
 
 ### Time Travel

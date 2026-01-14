@@ -1,5 +1,3 @@
-# Account Access and Security
-
 ## Outline security principles
 
 ### Network security and policies

@@ -1,5 +1,3 @@
-# Snowflake AI Data Cloud Features and Architecture
-
 Snowflake is an overloaded term—it refers to a company, a Software-as-a-Service platform, and the name of a system-defined, read-only database that tracks metadata and usage data about your organization.
 
 The Snowflake data platform is cloud-native, designed specifically for cloud environments. Its three-layer architecture separates compute, storage, and cloud services for independent scaling. The platform works across AWS, Azure, and GCP, enabling customers to leverage existing cloud infrastructure and share data seamlessly across cloud environments.

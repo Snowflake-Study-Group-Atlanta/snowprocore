@@ -1,5 +1,3 @@
-# Performance and Cost Optimization Concepts
-
 ## Explain the use of the Query Profile
 
 The Query Profile in Snowsight shows how Snowflake executed a query. Access it from Query History to analyze performance.
