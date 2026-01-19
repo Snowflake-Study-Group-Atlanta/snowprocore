@@ -1,21 +1,12 @@
-# Snowflake SnowPro Core Exam Study Guide Notes
+# Readme
+
+This repo is published via GitHub Pages to [https://snowflake-study-group-atlanta.github.io/snowprocore/](https://snowflake-study-group-atlanta.github.io/snowprocore/).
 
 > Study notes based on the official exam guide revision August 22, 2025.
 
-This repo is published to [https://snowflake-study-group-atlanta.github.io/snowprocore/](https://snowflake-study-group-atlanta.github.io/snowprocore/).
+## Objectives and Topics
 
-## COF-C02/COF-R02 Exam Domains
-
-- Domain 1.0: [Snowflake AI Data Cloud Features and Architecture](snowflake_ai_data_cloud_features_and_architecture) (24%)
-- Domain 2.0: [Account Access and Security](account_access_and_security) (18%)
-- Domain 3.0: [Performance and Cost Optimization Concepts](performance_and_cost_optimization_concepts) (16%)
-- Domain 4.0: [Data Loading and Unloading](data_loading_and_unloading) (12%)
-- Domain 5.0: [Data Transformations](data_transformations) (18%)
-- Domain 6.0: [Data Protection and Data Sharing](data_protection_and_data_sharing) (12%)
-
-## Table of Contents
-
-1. Snowflake AI Data Cloud Features and Architecture
+1. Snowflake AI Data Cloud Features and Architecture (24%)
     - Outline key features of the Snowflake Data Cloud
         - Interoperable stage
         - Elastic compute
@@ -50,7 +41,7 @@ This repo is published to [https://snowflake-study-group-atlanta.github.io/snowp
         - Micro-partitions
         - Data clustering
         - Data storage monitoring
-2. Account Access and Security
+2. Account Access and Security (18%)
     - Outline security principles
         - Network security and policies
         - Multi-Factor Authentication (MFA) enforcement
@@ -73,7 +64,7 @@ This repo is published to [https://snowflake-study-group-atlanta.github.io/snowp
             - Tracking read/write operations
         - Overview of row/column-level security
         - Object tags
-3. Performance and Cost Optimization Concepts
+3. Performance and Cost Optimization Concepts (16%)
     - Explain the use of the Query Profile
         - Explain plans
         - Data spilling
@@ -120,7 +111,7 @@ This repo is published to [https://snowflake-study-group-atlanta.github.io/snowp
         - Attribute costs
             - Cost center tagging
             - Use of the ACCOUNT USAGE schema
-4. Data Loading and Unloading
+4. Data Loading and Unloading (12%)
     - Define concepts and best practices that should be considered when loading data
         - Stages and stage types
         - File size and formats
@@ -148,7 +139,7 @@ This repo is published to [https://snowflake-study-group-atlanta.github.io/snowp
         - COPY INTO
         - CREATE STAGE
         - CREATE FILE FORMAT
-5. Data Transformations
+5. Data Transformations (18%)
     - Explain how to work with structured data
         - Estimation functions
         - Sampling
@@ -182,7 +173,7 @@ This repo is published to [https://snowflake-study-group-atlanta.github.io/snowp
         - Processing unstructured data
             - User-Defined Functions (UDFs) for unstructured data analysis
             - Stored procedure
-6. Data Protection and Data Sharing
+6. Data Protection and Data Sharing (12%)
     - Outline Continuous Data Protection with Snowflake
         - Time Travel
         - Fail-safe
