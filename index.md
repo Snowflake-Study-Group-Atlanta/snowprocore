@@ -5,6 +5,18 @@ title: Study Guide
 
 ## Introduction
 
+We are forming a study group focused on the Snowflake SnowPro Core exam. Our study group is an off-shoot of the [Snowflake Atlanta User Group](https://usergroups.snowflake.com/atlanta/). The goal of the group is to cover all material outlined in the official Snowflake study guide in a structured and collaborative manner. The exam consists of six domain areas, and the plan is to cover one domain per meeting.
+
+Summary
+
+* One meeting per month
+* January through June 2026
+* The schedule can be adapted as needed based on group feedback
+
+The study group will be led by [Lance England](https://usergroups.snowflake.com/u/lance/#/about), Senior Consultant at Improving, who obtained the Snowflake SnowPro Core certification in early 2025.
+
+Study notes are based on the official exam guide revision August 22, 2025.
+
 ## Schedule and Content
 
 | Date | RSVP | Notes | Other |
